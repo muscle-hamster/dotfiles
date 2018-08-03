@@ -1,36 +1,28 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export EDITOR=vim
-
 # Path to your oh-my-zsh installation.
-case `uname` in
-  Darwin)
-    # commands for OS X go here
-    export ZSH=/Users/branceboren/.oh-my-zsh
-    export EDITOR=mvim
-  ;;
-  Linux)
-    # commands for Linux go here
-    export ZSH=/home/branceboren/.oh-my-zsh
-    export EDITOR=gvim
-    if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-      source /etc/profile.d/vte.sh
-    fi
-  ;;
-esac
-
+  export ZSH="/home/brock/.oh-my-zsh"
+  export PATH=~/.npm-global/bin:$PATH
+  export PATH=~/.local/bin:$PATH
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="af-magic"
+
+# Set list of themes to load
+# Setting this variable when ZSH_THEME=random
+# cause zsh load theme from this variable instead of
+# looking in ~/.oh-my-zsh/themes/
+# An empty array have no effect
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
-HYPHEN_INSENSITIVE="true"
+# HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -67,7 +59,9 @@ HYPHEN_INSENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git ssh-agent)
+plugins=(
+  git node
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -95,26 +89,10 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-
-if [ -f ~/.zsh_aliases ]; then
-	. ~/.zsh_aliases
-fi
-
-#so as not to be disturbed by Ctrl-S ctrl-Q in terminals:
-stty -ixon
-
+#
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# npm global directory
-export PATH=~/.npm-global/bin:$PATH
-
-# other env vars
-export GOPATH=$HOME/go
-export PATH=${GOPATH//://bin:}/bin:$PATH
-
-# virtualenvwrapper stuffs
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/workspace
-source "$(command -v virtualenvwrapper.sh)"
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
