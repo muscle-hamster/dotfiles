@@ -10,6 +10,10 @@ All files need to be either symlinked or moved into your home directory. You can
 ```
 ln -s <file path> <symlink path>
 ```
+or you can use [Stow](https://www.gnu.org/software/stow/manual/stow.html) by simply using the following command:
+```
+stow <path of file>
+```
 ### Extras
 Extra modules, programs, fonts, themes or shell scripts I am running. Installation instructions for each of these can be found by following the links.
 
