@@ -15,4 +15,5 @@ Extra modules, programs or shell scripts I am running
 
 #### Polybar
 [polybar](https://github.com/jaagr/polybar)
+
 [Oh My ZSH](https://github.com/robbyrussell/oh-my-zsh)
