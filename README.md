@@ -11,7 +11,7 @@ All files need to be either symlinked or moved into your home directory. You can
 ln -s <file path> <symlink path>
 ```
 ### Extras
-Extra modules, programs, fonts, themes or shell scripts I am running
+Extra modules, programs, fonts, themes or shell scripts I am running. Installation instructions for each of these can be found by following the links.
 
 #### Polybar
 [polybar](https://github.com/jaagr/polybar)
@@ -25,3 +25,13 @@ Extra modules, programs, fonts, themes or shell scripts I am running
 [Ark Remix GTK Theme](https://store.kde.org/p/1214931/)
 
 [gVim](https://www.vim.org/download.php)
+
+[i3](https://i3wm.org/)
+
+[Nitrogen](https://wiki.archlinux.org/index.php/nitrogen)
+
+[Compton](https://wiki.archlinux.org/index.php/compton)
+
+[nm-applet](https://wiki.archlinux.org/index.php/NetworkManager)
+
+[pasystray](https://github.com/christophgysin/pasystray)
