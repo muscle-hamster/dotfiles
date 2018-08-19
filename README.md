@@ -17,7 +17,6 @@ stow <path of file>
 ### Extras
 Extra modules, programs, fonts, themes or shell scripts I am running. Installation instructions for each of these can be found by following the links.
 
-#### Polybar
 [polybar](https://github.com/jaagr/polybar)
 
 [Oh My ZSH](https://github.com/robbyrussell/oh-my-zsh)
