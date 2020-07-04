@@ -69,6 +69,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'honza/vim-snippets'
     Plug 'airblade/vim-rooter'
     Plug 'ap/vim-css-color'
+    Plug '~/.fzf'
+    " Plug 'junegunn/fzf.vim'
+    " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'yuttie/comfortable-motion.vim'
 call plug#end()
 
@@ -140,10 +143,12 @@ nnoremap <leader>lcd :lcd %:p:h<CR>:pwd<CR>
 " Select text that was last pasted
 nnoremap gp `[v`]
 
+nnoremap <C-i> :FZF ~<CR>
+
 " ctrlp settings
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|build|deps|venv*)|(\.(swp|ico|git|svn))$'
 
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep'
   nmap <C-f> :Ack<space>
 endif

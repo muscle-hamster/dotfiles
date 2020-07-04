@@ -5,6 +5,7 @@
   export ZSH="/home/brock/.oh-my-zsh"
   export PATH=~/.npm-global/bin:$PATH
   export PATH=~/.local/bin:$PATH
+  export FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules/*,.git/*}" --exclude node_modules'
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes

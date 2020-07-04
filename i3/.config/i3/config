@@ -13,7 +13,7 @@
 # exec xrandr --output DVI-I-2-2 --auto --output DVI-I-1-1 --auto
 
 #start polybar (status bar)
-exec polybar example
+# exec polybar example
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
@@ -112,21 +112,20 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # Workspace Variables
-set $workspace1 "1: Vim"
-set $workspace2 "2: Chat"
-set $workspace3 "3: Terminals"
-set $workspace4 "4: Chrome"
-set $workspace5 "5: Spotify"
-set $workspace6 "6: Postman"
-set $workspace7 "7: Misc Tools"
-set $workspace10 "10: Domo"
+set $workspace1 "1"
+set $workspace2 "2"
+set $workspace3 "3"
+set $workspace4 "4"
+set $workspace5 "5"
+set $workspace6 "6"
+set $workspace7 "7"
+set $workspace10 "10"
 
 # display output variables
 set $monitorLaptop "eDP1"
-set $monitorLeft "HDMI1"
-set $monitorMiddle "HDMI2"
-set $monitorRight "DVI-I-1-1"
-set $monitorTop "DVI-I-2-2"
+set $monitorLeft "DVI-I-2-2"
+set $monitorMiddle "DVI-I-1-1"
+set $monitorRight "DP-1"
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -154,23 +153,20 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # start programs on execution of i3 config
 exec --no-startup-id i3-msg "workspace $workspace1; exec gvim"
-exec --no-startup-id i3-msg "workspace $workspace2; exec Telegram"
-exec --no-startup-id i3-msg "workspace $workspace3; exec tilix"
-exec --no-startup-id i3-msg "workspace $workspace4; exec google-chrome"
-exec --no-startup-id i3-msg "workspace $workspace5; exec spotify"
-exec --no-startup-id i3-msg "workspace $workspace6; exec postman"
-exec --no-startup-id i3-msg "workspace $workspace10; exec google-chrome https://printerlogic.domo.com/link/xw3GwRGcqmVQ8sgm"
+exec --no-startup-id i3-msg "workspace $workspace2; exec kitty"
+exec --no-startup-id i3-msg "workspace $workspace3; exec google-chrome"
+exec --no-startup-id i3-msg "workspace $workspace4; exec Telegram"
+exec --no-startup-id i3-msg "workspace $workspace4; exec spotify"
+exec --no-startup-id i3-msg "workspace $workspace5; exec postman"
+exec --no-startup-id i3-msg "workspace $workspace6; exec slack"
 
 # set up workspaces when multiple monitors are connected
 workspace $workspace1 output $monitorMiddle
-workspace $workspace2 output $monitorTop
-workspace $workspace3 output $monitorLeft
-workspace $workspace5 output $monitorLaptop
+workspace $workspace2 output $monitorLeft
+workspace $workspace3 output $monitorRight
+workspace $workspace4 output $monitorLaptop
+workspace $workspace5 output $monitorRight
 workspace $workspace6 output $monitorRight
-workspace $workspace7 output $monitorRight
-workspace $workspace10 output $monitorRight
-
-assign [class="Vmware"] $workspace7
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -208,24 +204,27 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # start rofi (a program launcher)
-bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec rofi -show drun -show-icons -icon-theme MY_ICON_THEME
+
+# start gpaste integrated with rofi
+bindsym $mod+i exec ~/rofi-gpaste.sh
 
 # split in horizontal orientation
 bindsym $mod+g split h
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-# bar {
-  # status_command /usr/bin/i3status
-	# colors {
-		# background $bg-color
-				# separator #757575
-		# #                  border             background         text
-		# focused_workspace  $bg-color          $bg-color          $text-color
-		# inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-		# urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-	# }
-# }
+bar {
+  status_command /usr/bin/i3status
+  colors {
+    background $bg-color
+        separator #757575
+    #                  border             background         text
+    focused_workspace  $bg-color          $bg-color          $text-color
+    inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+    urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+  }
+}
 
 # Pulse Audio/aMixer/playerctl controls
 bindsym XF86AudioRaiseVolume exec exec amixer -q sset Master 5+ unmute
@@ -259,3 +258,6 @@ exec nm-applet
 
 # audio output manager
 exec pasystray
+
+# Set natural scrolling
+exec --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113
