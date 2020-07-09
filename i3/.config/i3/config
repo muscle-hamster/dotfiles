@@ -204,7 +204,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # start rofi (a program launcher)
-bindsym $mod+d exec rofi -show drun -show-icons -icon-theme MY_ICON_THEME
+# bindsym $mod+d exec rofi -show drun -show-icons -icon-theme MY_ICON_THEME
+bindsym $mod+d exec rofi -show drun -theme slate.rasi
 
 # start gpaste integrated with rofi
 bindsym $mod+i exec ~/rofi-gpaste.sh
