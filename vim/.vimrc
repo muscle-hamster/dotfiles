@@ -1,4 +1,5 @@
 set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab autoindent splitright splitbelow showcmd number
+autocmd FileType php setlocal tabstop=4 softtabstop=4 shiftwidth=4
 autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79
 autocmd BufNewFile,BufRead *.apex set filetype=apex
 
@@ -152,3 +153,6 @@ if executable('rg')
   let g:ackprg = 'rg --vimgrep'
   nmap <C-f> :Ack<space>
 endif
+
+" Makes vim background solid color in terminal
+let &t_ut=''

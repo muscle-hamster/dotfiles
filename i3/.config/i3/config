@@ -239,6 +239,8 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
+
+bindsym $mod+c exec "i3-msg 'floating toggle; sticky toggle; resize shrink width 10000px; resize grow width 400px; resize shrink height 10000px; resize grow height 250px;move position 10px 10px;'"
 # Use 1x3 monitor setup. Configured Using arandr. These are definded in workstation.sh and laptop.sh in .screenlayout
 #exec_always xrandr --output DisplayPort-3 --primary --mode 1920x1080 --pos 1920x1080 --rotate normal --output DisplayPort-5 --mode 1920x1080 --pos 0x1080 --rotate normal --output DisplayPort-4 --mode 1920x1080 --pos 1920x0 --rotate normal --output DisplayPort-6 --mode 1920x1080 --pos 3840x1080 --rotate normal --output HDMI-1-3 --off --output HDMI-1-2 --off --output HDMI-1-1 --off --output DP-1-3 --off --output DP-1-2 --off --output DP-1-1 --off
 

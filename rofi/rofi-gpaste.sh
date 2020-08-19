@@ -7,7 +7,7 @@
 #
 
 line=`gpaste-client --oneline | \
-  rofi -dmenu -i -p clipboard -kb-custom-1 Ctrl+x $@`
+  rofi -theme slate.rasi -dmenu -i -p clipboard -kb-custom-1 Ctrl+x $@`
 exit_code=$?
 
 index=`echo $line | cut -d ':' -f1`
