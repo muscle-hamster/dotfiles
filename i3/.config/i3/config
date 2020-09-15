@@ -264,3 +264,6 @@ exec pasystray
 
 # Set natural scrolling
 exec --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113
+
+#Screenshot
+bindsym $mod+Shift+y exec flameshot gui -p ~/Downloads/
