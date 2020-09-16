@@ -62,6 +62,7 @@ ZSH_THEME="af-magic"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git node
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -90,7 +91,10 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
+
+if [ -f ~/.zsh_aliases ]; then
+    . ~/.zsh_aliases
+fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -125,3 +129,11 @@ zle -N zle-keymap-select
 precmd_functions+=(_set_beam_cursor) #
 # ensure insert mode and beam cursor when exiting vim
 zle-line-init() { zle -K viins; _set_beam_cursor }
+
+# oh-my-zsh
+# auto-suggestion plugin settings
+bindkey '^ ' autosuggest-execute
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#828282'
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+ZSH_AUTOSUGGEST_USE_ASYNC='yayayaya'
+ZSH_AUTOSUGGEST_MANUAL_REBIND='yayayaya'
