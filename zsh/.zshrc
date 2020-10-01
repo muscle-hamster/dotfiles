@@ -136,3 +136,6 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#828282'
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_USE_ASYNC='yayayaya'
 ZSH_AUTOSUGGEST_MANUAL_REBIND='yayayaya'
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform

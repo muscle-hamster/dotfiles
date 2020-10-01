@@ -28,6 +28,13 @@ if &term == 'xterm-256color' || &term == 'screen-256color'
   let &t_EI = "\<Esc>[1 q"
 endif
 
+let g:prettier#autoformat = 1
+let g:prettier#exec_cmd_async = 1
+let g:prettier#autoformat_require_pragma = 0
+let g:prettier#autoformat_config_present = 1
+let g:prettier#config#config_precedence = 'prefer-file'
+nmap <Leader>wy <Plug>(Prettier)
+
 set clipboard^=unnamed,unnamedplus
 
 " Make vims shell interactive
@@ -70,6 +77,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'honza/vim-snippets'
     Plug 'airblade/vim-rooter'
     Plug 'ap/vim-css-color'
+    Plug 'prettier/vim-prettier', { 'do': 'npm install' }
     Plug '~/.fzf'
     " Plug 'junegunn/fzf.vim'
     " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -90,6 +98,8 @@ let g:ultisnips_javascript = {
   \ 'space-before-function-paren': 'always',
 \ }
 
+" let s:ycm_hover_popup = -1
+
 colo onedark
 
 if has('win32')
@@ -109,7 +119,7 @@ set guioptions-=m
 set guioptions-=r
 set guioptions-=L
 
-set updatetime=250
+set updatetime=750
 
 let g:taboo_tab_format = " %N - %f%m "
 map <leader>k :NERDTreeToggle<CR>
@@ -156,3 +166,12 @@ endif
 
 " Makes vim background solid color in terminal
 let &t_ut=''
+
+" turn off ycm_auto_hover
+let g:ycm_auto_hover =
+      \ get( g:, '', '' )
+
+" treat _ as a word boundary so words joined with an _ are not treated as a
+" single word
+set iskeyword-=_
+
