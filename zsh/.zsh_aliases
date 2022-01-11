@@ -1,26 +1,12 @@
-alias runs='python manage.py runserver 127.0.0.1:8000'
-alias runss='python manage.py runserver_plus 127.0.0.1:8000 --cert cert'
-alias collstat='python manage.py collectstatic -l'
-alias sshpl='ssh printerl@printerlogic.com -p 2200'
-alias sshplr='ssh -p 2200 root@printerlogic.com'
-alias sshcc='ssh jarrett88@chorechartmonkey.com'
-alias manshell='python manage.py shell'
-alias testemail='python -m smtpd -n -c DebuggingServer localhost:1025'
-alias fixhdmiaudio='speaker-test -c 2 -r 48000 -D hw:0,3'
 alias gitgraph='git log --oneline --graph --decorate'
 alias countfiles='find -maxdepth 1 -type d | while read -r dir; do printf "%s:\t" "$dir"; find "$dir" -type f | wc -l; done'
 alias pgoog='ping www.google.com'
-alias demosite='ngrok http 127.0.0.1:8000'
 alias bc='bc -l'
 alias mkdir='mkdir -pv'
-alias h='history'
 alias ports='netstat -tulanp'
 alias wget='wget -c'
-alias refresh='source ~/.bashrc'
-alias genpass='date +%s | sha256sum | base64 | head -c 32 ; echo'
-alias dhupdate='cd /home/branceboren/workspace/devhumor-slack && node devhumor.js'
+alias refresh='source ~/.zshrc && source ~/.zsh_aliases'
 alias gv='gvim --remote-silent'
-alias mux="tmuxinator"
 
 ## shortcut  for iptables and pass it via sudo#
 alias ipt='sudo /sbin/iptables'
@@ -37,15 +23,6 @@ function largefiles {
     echo "Usage: largefiles {directory path}"
   else
     du -ah $1 | sort -n -r | head -n 10
-  fi
-}
-
-function spotdl {
-  if [ -z "$1" ]; then
-    # display usage if no parameters given
-    echo "Usage: spotdl {spotify_song_id} (can be retrieved from spotify URI)"
-  else
-    $HOME/workspace/spotify-dl/spotify-dl.py --track $1 --dl youtube
   fi
 }
 
@@ -70,7 +47,7 @@ function plrsync {
 # GIT ALIASES
 alias g='git status'
 alias gu='git status -uno'
-alias gh='git hist'
+# alias gh='git hist'
 alias gp='git pull'
 alias gpr='git pull --rebase'
 alias gpp='git pull --rebase && git push'
@@ -92,10 +69,21 @@ alias grs='git rebase --skip'
 alias gsl='git stash list'
 alias gss='git stash save'
 alias gcontrib='git shortlog -s -n --all'
+alias gignore='git update-index --assume-unchanged'
+alias gtrack='git update-index --no-assume-unchanged'
 
 # Command line aliases
-alias :q='exit'
 alias hs='history | fzf'
+alias icat='kitty +kitten icat'
+alias msdb='source mssql-source.sh sourceDb'
+alias ap='awsprofiles'
+
+# Maskcara Beauty Aliases
+alias exigo_watch="ls ../exigo-laravel/src/**/*.php | entr -s 'rm -rf vendor/maskcara/exigo-laravel && composer install'"
+
+function gil {
+  git ls-files -v | grep '^[[:lower:]]'
+}
 
 function gitpullall {
   for branch in `git branch -a | grep remotes | grep -v HEAD | grep -v master`; do

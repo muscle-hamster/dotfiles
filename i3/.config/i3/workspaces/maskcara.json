@@ -1,0 +1,110 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "user_off",
+    "geometry": {
+       "height": 1391,
+       "width": 3440,
+       "x": 0,
+       "y": 0
+    },
+    "marks": [],
+    "name": "i3-save-tree --workspace maskcara > ~/.config/i3/workspaces/maskcara.json",
+    "percent": 0.3,
+    "swallows": [
+       {
+       // "class": "^kitty$",
+       // "instance": "^kitty$",
+       // "title": "^i3\\-save\\-tree\\ \\-\\-workspace\\ maskcara\\ \\>\\ \\~\\/\\.config\\/i3\\/workspaces\\/maskcara\\.json$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    // splitv split container with 1 children
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "marks": [],
+    "percent": 0.7,
+    "type": "con",
+    "nodes": [
+        {
+            // splitv split container with 1 children
+            "border": "normal",
+            "floating": "auto_off",
+            "layout": "splitv",
+            "marks": [],
+            "percent": null,
+            "type": "con",
+            "nodes": [
+                {
+                    "border": "normal",
+                    "current_border_width": 2,
+                    "floating": "auto_off",
+                    "geometry": {
+                       "height": 1391,
+                       "width": 3440,
+                       "x": 0,
+                       "y": 0
+                    },
+                    "marks": [],
+                    "name": "kubernetes.staging.yml (~/Workspaces/maskcara/maskcarabeauty/docker) - NVIM",
+                    "percent": 1,
+                    "swallows": [
+                       {
+                       // "class": "^kitty$",
+                       // "instance": "^kitty$",
+                       // "title": "^kubernetes\\.staging\\.yml\\ \\(\\~\\/Workspaces\\/maskcara\\/maskcarabeauty\\/docker\\)\\ \\-\\ NVIM$"
+                       }
+                    ],
+                    "type": "con"
+                }
+            ]
+        }
+    ]
+}
+
+{
+    // floating_con with 1 children
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splith",
+    "marks": [],
+    "percent": null,
+    "rect": {
+       "height": 964,
+       "width": 1281,
+       "x": 574,
+       "y": 81
+    },
+    "type": "floating_con",
+    "nodes": [
+        {
+            "border": "normal",
+            "current_border_width": 2,
+            "floating": "user_on",
+            "geometry": {
+               "height": 1080,
+               "width": 500,
+               "x": 962,
+               "y": 180
+            },
+            "marks": [],
+            "name": "i3: Layout saving in i3 - Brave",
+            "percent": 1,
+            "swallows": [
+               {
+               // "class": "^Brave\\-browser$",
+               // "instance": "^brave\\-browser$",
+               // "title": "^i3\\:\\ Layout\\ saving\\ in\\ i3\\ \\-\\ Brave$",
+               // "window_role": "^browser$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+

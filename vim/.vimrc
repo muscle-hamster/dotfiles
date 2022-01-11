@@ -2,6 +2,7 @@ set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab autoindent splitrigh
 autocmd FileType php setlocal tabstop=4 softtabstop=4 shiftwidth=4
 autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79
 autocmd BufNewFile,BufRead *.apex set filetype=apex
+autocmd BufRead,BufNewFile /*/nginx/* set filetype=nginx
 
 " Turn off any error sounds or flashes
 set noerrorbells visualbell t_vb=
@@ -78,10 +79,15 @@ call plug#begin('~/.vim/plugged')
     Plug 'airblade/vim-rooter'
     Plug 'ap/vim-css-color'
     Plug 'prettier/vim-prettier', { 'do': 'npm install' }
-    Plug '~/.fzf'
-    " Plug 'junegunn/fzf.vim'
-    " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    " Plug '~/.fzf'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
     Plug 'yuttie/comfortable-motion.vim'
+    Plug 'vimwiki/vimwiki'
+    Plug 'mhinz/vim-startify'
+    Plug 'itchyny/calendar.vim'
+    Plug 'jwalton512/vim-blade'
+    Plug 'chrisbra/csv.vim'
 call plug#end()
 
 let g:UltiSnipsEditSplit='vertical'
@@ -133,7 +139,7 @@ let g:NERDCustomDelimiters = {
 \}
 
 let g:rooter_change_directory_for_non_project_files = 'home'
-let g:rooter_use_lcd = 1
+let g:rooter_cd_cmd = 'lcd'
 let g:rooter_resolve_links = 1
 let g:rooter_patterns = ['package.json', '.git/']
 
@@ -154,7 +160,12 @@ nnoremap <leader>lcd :lcd %:p:h<CR>:pwd<CR>
 " Select text that was last pasted
 nnoremap gp `[v`]
 
-nnoremap <C-i> :FZF ~<CR>
+nnoremap <C-i> :Files ~<CR>
+
+nnoremap <C-p> :Rg <CR>
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
 
 " ctrlp settings
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|build|deps|venv*)|(\.(swp|ico|git|svn))$'
@@ -175,3 +186,29 @@ let g:ycm_auto_hover =
 " single word
 set iskeyword-=_
 
+" VimWiki settings
+set nocompatible
+filetype plugin on
+let g:csv_table_leftalign = 1
+syntax on
+let g:vimwiki_list = [
+    \{'path': '~/Notes/vimwiki/', 'syntax': 'markdown', 'ext': '.md'},
+    \{'path': '~/Notes/vimwiki/spanish', 'syntax': 'markdown', 'ext': '.md'}
+  \]
+
+let g:vimwiki_ext2syntax = {'.md': 'markdown'}
+
+let g:vimwiki_global_ext = 0
+
+" Copy relative file path to system clipboard
+nnoremap <leader>cf :let @+=expand("%")<CR>
+" Copy absolute file path to system clipboard
+nnoremap <leader>cF :let @+=expand("%:p")<CR>
+" Copy file name to system clipboard
+nnoremap <leader>ct :let @+=expand("%:t")<CR>
+" Copy directory name to system clipboard
+nnoremap <leader>ch :let @+=expand("%:p:h")<CR>
+
+map <leader>wc :Calendar -view=year -split=vertical -width=27<CR>
+
+noremap <S-T> :Buffers<CR>

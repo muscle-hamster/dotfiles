@@ -37,7 +37,7 @@ font pango:System San Francisco Display 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -102,6 +102,12 @@ bindsym $mod+e layout toggle split
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
+# move floating window to scratchpad
+bindsym $mod+Shift+x move scratchpad
+#
+# recall floating window from scratchpad
+bindsym $mod+Shift+z scratchpad show
+
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
@@ -126,6 +132,14 @@ set $monitorLaptop "eDP1"
 set $monitorLeft "DVI-I-2-2"
 set $monitorMiddle "DVI-I-1-1"
 set $monitorRight "DP-1"
+#
+# switch to program
+bindsym $mod+b [class="Brave"] focus
+bindsym $mod+n [class="kitty" title="Nvim"] focus
+bindsym $mod+t [class="kitty" title="Terminals"] focus
+bindsym $mod+Shift+m [class="TelegramDesktop"] focus
+bindsym $mod+m [class="Slack"] focus
+bindsym $mod+c [class="Chrome"] focus
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -152,21 +166,27 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace $workspace10
 
 # start programs on execution of i3 config
-exec --no-startup-id i3-msg "workspace $workspace1; exec gvim"
-exec --no-startup-id i3-msg "workspace $workspace2; exec kitty"
-exec --no-startup-id i3-msg "workspace $workspace3; exec google-chrome"
-exec --no-startup-id i3-msg "workspace $workspace4; exec Telegram"
-exec --no-startup-id i3-msg "workspace $workspace4; exec spotify"
-exec --no-startup-id i3-msg "workspace $workspace5; exec postman"
-exec --no-startup-id i3-msg "workspace $workspace6; exec slack"
+# bindsym $mod+Control+n [class="Brave"] focus
+exec --no-startup-id i3-msg "workspace $workspace1; exec kitty; title_format 'Nvim'; mark Seint"
+exec --no-startup-id i3-msg "workspace $workspace1; exec kitty; title_format 'Terminals'; mark Seint"
+exec --no-startup-id i3-msg "workspace $workspace1; exec brave; mark Seint"
+exec --no-startup-id i3-msg "workspace $workspace9; exec chrome; mark Seint"
+exec --no-startup-id i3-msg "workspace $workspace0; exec telegram-desktop; mark Messaging"
+exec --no-startup-id i3-msg "workspace $workspace0; exec slack; mark Messaging"
+
+#personal workspace
+exec --no-startup-id i3-msg "workspace $workspace2; exec kitty; title_format 'Nvim'; mark Purche"
+exec --no-startup-id i3-msg "workspace $workspace2; exec kitty; title_format 'Terminals'; mark Purche"
+exec --no-startup-id i3-msg "workspace $workspace2; exec brave; mark Purche"
 
 # set up workspaces when multiple monitors are connected
-workspace $workspace1 output $monitorMiddle
-workspace $workspace2 output $monitorLeft
+workspace $workspace1 output $monitorLeft
+workspace $workspace2 output $monitorRight
 workspace $workspace3 output $monitorRight
 workspace $workspace4 output $monitorLaptop
 workspace $workspace5 output $monitorRight
 workspace $workspace6 output $monitorRight
+workspace $workspace7 output $monitorLaptop
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -205,7 +225,10 @@ bindsym $mod+r mode "resize"
 
 # start rofi (a program launcher)
 # bindsym $mod+d exec rofi -show drun -show-icons -icon-theme MY_ICON_THEME
+
 bindsym $mod+d exec rofi -show drun -theme slate.rasi
+bindsym $mod+Shift+d exec rofi -combi-modi run#ssh -show combi -theme slate.rasi
+bindsym $mod+Shift+w exec rofi -show window -theme slate.rasi
 
 # start gpaste integrated with rofi
 bindsym $mod+i exec ~/rofi-gpaste.sh
@@ -240,7 +263,8 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 
-bindsym $mod+c exec "i3-msg 'floating toggle; sticky toggle; resize shrink width 10000px; resize grow width 400px; resize shrink height 10000px; resize grow height 250px;move position 10px 10px;'"
+# useful... come back to this command
+# bindsym $mod+c exec "i3-msg 'floating toggle; sticky toggle; resize shrink width 10000px; resize grow width 400px; resize shrink height 10000px; resize grow height 250px;move position 10px 10px;'"
 # Use 1x3 monitor setup. Configured Using arandr. These are definded in workstation.sh and laptop.sh in .screenlayout
 #exec_always xrandr --output DisplayPort-3 --primary --mode 1920x1080 --pos 1920x1080 --rotate normal --output DisplayPort-5 --mode 1920x1080 --pos 0x1080 --rotate normal --output DisplayPort-4 --mode 1920x1080 --pos 1920x0 --rotate normal --output DisplayPort-6 --mode 1920x1080 --pos 3840x1080 --rotate normal --output HDMI-1-3 --off --output HDMI-1-2 --off --output HDMI-1-1 --off --output DP-1-3 --off --output DP-1-2 --off --output DP-1-1 --off
 

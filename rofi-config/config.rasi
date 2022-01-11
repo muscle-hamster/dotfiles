@@ -1,5 +1,6 @@
 configuration {
-/*	modi: "window,run,ssh";*/
+  modi: "window,run,ssh,combi";
+  combi-modi: "window,drun,ssh,application";
 	width: 100;
 	lines: 5;
 	columns: 1;
